@@ -65,6 +65,34 @@
 
             label = "MACOS_WORD_END";
         };
+
+        macos_space_next: macos_space_next {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp RIGHT_ARROW>,
+                <&macro_release>,
+                <&kp LCTRL>;
+
+            label = "MACOS_SPACE_NEXT";
+        };
+
+        macos_space_prev: macos_tab_prev {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_press>,
+                <&kp LCTRL>,
+                <&macro_tap>,
+                <&kp LEFT_ARROW>,
+                <&macro_release>,
+                <&kp LCTRL>;
+
+            label = "MACOS_TAB_PREV";
+        };
     };
 
     keymap {
@@ -97,9 +125,9 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB            &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6    &kp N7             &kp N8           &kp N9     &kp N0     &bspc_del
-&kp LCTRL          &trans  &trans  &trans    &trans  &trans       &kp LEFT  &kp DOWN           &kp UP           &kp RIGHT  &prev_tab  &next_tab
-&shift_double_tap  &trans  &trans  &trans    &trans  &trans       &kp HOME  &macos_word_begin  &macos_word_end  &kp END    &trans     &trans
+&kp TAB            &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6    &kp N7             &kp N8           &kp N9     &kp N0             &bspc_del
+&kp LCTRL          &trans  &trans  &trans    &trans  &trans       &kp LEFT  &kp DOWN           &kp UP           &kp RIGHT  &prev_tab          &next_tab
+&shift_double_tap  &trans  &trans  &trans    &trans  &trans       &kp HOME  &macos_word_begin  &macos_word_end  &kp END    &macos_space_prev  &macos_space_next
                                    &kp LGUI  &trans  &kp SPACE    &kp RET   &trans             &kp RALT
             >;
         };
@@ -138,7 +166,7 @@
             #binding-cells = <0>;
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
 
-            mods = <(MOD_LSFT|MOD_LCTL)>;
+            mods = <(MOD_LCTL)>;
         };
 
         caps_word: caps_word {
@@ -162,7 +190,8 @@
             bindings = <&kp ESCAPE>, <&kp GRAVE>;
 
             #binding-cells = <0>;
-            mods = <(MOD_LSFT)>;
+            mods = <(MOD_LCTL)>;
+            keep-mods = <(MOD_LCTL)>;
         };
 
         hold_else_gresc: hold_else_gresc {
