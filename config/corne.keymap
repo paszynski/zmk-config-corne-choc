@@ -166,7 +166,7 @@
             #binding-cells = <0>;
             bindings = <&kp BACKSPACE>, <&kp DELETE>;
 
-            mods = <(MOD_LCTL)>;
+            mods = <(MOD_LCTL|MOD_LSFT)>;
         };
 
         caps_word: caps_word {
