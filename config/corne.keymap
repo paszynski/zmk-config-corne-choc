@@ -38,97 +38,6 @@
             label = "PREV_TAB";
         };
 
-        macos_word_begin: macos_word_begin {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_ALT>,
-                <&macro_tap>,
-                <&kp LEFT_ARROW>,
-                <&macro_release>,
-                <&kp LEFT_ALT>;
-
-            label = "MACOS_WORD_BEGIN";
-        };
-
-        macos_word_end: macos_word_end {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LEFT_ALT>,
-                <&macro_tap>,
-                <&kp RIGHT_ARROW>,
-                <&macro_release>,
-                <&kp LEFT_ALT>;
-
-            label = "MACOS_WORD_END";
-        };
-
-        macos_space_next: macos_space_next {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp RIGHT_ARROW>,
-                <&macro_release>,
-                <&kp LCTRL>;
-
-            label = "MACOS_SPACE_NEXT";
-        };
-
-        macos_space_prev: macos_tab_prev {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
-                <&macro_tap>,
-                <&kp LEFT_ARROW>,
-                <&macro_release>,
-                <&kp LCTRL>;
-
-            label = "MACOS_TAB_PREV";
-        };
-
-        macos_begin: macos_begin {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LG(LEFT_COMMAND)>,
-                <&macro_tap>,
-                <&kp LEFT_ARROW>,
-                <&macro_release>,
-                <&kp LG(LEFT_ALT)>;
-
-            label = "MACOS_BEGIN";
-        };
-
-        macos_end: macos_end {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_press>,
-                <&kp LG(LEFT_ALT)>,
-                <&macro_tap>,
-                <&kp RIGHT_ARROW>,
-                <&macro_release>,
-                <&kp LG(LEFT_ALT)>;
-
-            label = "MACOS_END";
-        };
-
-        app_windows_nav: app_windows_nav {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings = <&kp LC(GRAVE)>;
-            label = "APP_WINDOWS_NAV";
-        };
-
         mic_mute: mic_mute {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
@@ -149,8 +58,8 @@
     combos {
         compatible = "zmk,combos";
 
-        cmd_bspc_to_ctrl_grave {
-            bindings = <&app_windows_nav>;
+        cmd_bspc_to_cmd_grave {
+            bindings = <&kp LG(GRAVE)>;
             key-positions = <11 36>;
         };
     };
@@ -185,10 +94,10 @@
             //                    | GUI |     | SPC |   | ENT |     | ALT |
 
             bindings = <
-&kp TAB            &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6        &kp N7             &kp N8           &kp N9      &kp N0             &bspc_del
-&kp LCTRL          &trans  &trans  &trans    &trans  &trans       &kp LEFT      &kp DOWN           &kp UP           &kp RIGHT   &prev_tab          &next_tab
-&shift_double_tap  &trans  &trans  &trans    &trans  &trans       &macos_begin  &macos_word_begin  &macos_word_end  &macos_end  &macos_space_prev  &macos_space_next
-                                   &kp LGUI  &trans  &kp SPACE    &kp RET       &trans             &kp RALT
+&kp TAB            &kp N1  &kp N2  &kp N3    &kp N4  &kp N5       &kp N6              &kp N7              &kp N8               &kp N9               &kp N0              &bspc_del
+&kp LCTRL          &trans  &trans  &trans    &trans  &trans       &kp LEFT            &kp DOWN            &kp UP               &kp RIGHT            &prev_tab           &next_tab
+&shift_double_tap  &trans  &trans  &trans    &trans  &trans       &kp LG(LEFT_ARROW)  &kp LA(LEFT_ARROW)  &kp LA(RIGHT_ARROW)  &kp LA(RIGHT_ARROW)  &kp LC(LEFT_ARROW)  &kp LC(RIGHT_ARROW)
+                                   &kp LGUI  &trans  &kp SPACE    &kp RET             &trans              &kp RALT
             >;
         };
 
